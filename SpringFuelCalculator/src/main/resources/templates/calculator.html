@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link href="../static/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+
+</head>
+<body>
+<div id = "wrap">
+<div id = "main_container" class = "clearfix">
+<div id ="main" class = "section clearfix">
+    <div id = "main-big">
+        <h1 class="mb15">Калькулятор расхода топлива</h1>
+  <div class="dflex flex-wrap">
+      <div id = "travel" class = "bsbox pr10 mb20 wd50pc">
+          <form th:method="POST" th:action="@{calculator}" th:object="${calculator}" name = "form">
+              <div class="wrapper pd20 pl15_480 pr15_480">
+              <h2 class="mb10">Стоимость поездки</h2>
+              <div class="mb15">
+                 <label for="distance" class="db mb5">Расстояние</label>
+                  <input type="text" th:field="*{distance}" id= "distance" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+                  <div style="color:darkred" th:if="${#fields.hasErrors('distance')}" th:errors="*{distance}">Distance error</div>
+                  <span class="dbi pt5 pl10"> км.</span>
+              </div>
+                  <div class="mb15">
+                      <label for="consumption" class="db mb5">Средний расход топлива</label>
+                      <input type="text" th:field="*{consumption}" id = "consumption" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+                      <div style="color:darkred" th:if="${#fields.hasErrors('consumption')}" th:errors="*{consumption}">Consumption error</div>
+                      <span class="dbi pt5 pl10"> л/100 км.</span>
+                  </div>
+                  <div class="mb15">
+                      <label for="price" class="db mb5">Стоимость 1 л. топлива</label>
+                      <input type="text" th:field="*{fuelPrice}" id = "price" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+                      <div style="color:darkred" th:if="${#fields.hasErrors('fuelPrice')}" th:errors="*{fuelPrice}">FuelPrice error</div>
+                      <span class="dbi pt5 pl10"> грн/литр</span>
+                  </div>
+                  <div class="mt20 mb20">
+                      <button id="price_travel" class="btn_find pd5_15 font16 noselect" type="submit" value="Submit">Рассчитать</button>
+                  </div>
+                  <div class="mb15">
+                      <label for="travel_fuel" class="db mb5">Необходимое количество топлива</label>
+                      <input type="text" th:field="${calculator.fuelCount}" id = "travel_fuel" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+                      <span class="dbi pt5 pl10"> л.</span>
+                  </div>
+                  <div class="mb15">
+                      <label for="travel_price_r" class="db mb5">Стоимость поездки</label>
+                      <input type="text" th:field="${calculator.travelPrice}" id = "travel_price_r" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+                      <span class="dbi pt5 pl10"> грн.</span>
+                  </div>
+                  <div class="mt40"></div>
+              </div>
+          </form>
+      </div>
+      <div class="wd50pc mb20 pl10 bsbox wd100pc_768 p10_768">
+<div class="wrapper pd20 pl15_480 pr15_480">
+    <h2 class="mb15">Средний расход топлива</h2>
+    <div id="consumptions">
+          <form th:method="PATCH" th:action="@{calculator}" th:object="${calculator}" name = "form">
+        <div class="mb15">
+            <label for="consumption_fuel" class="db mb5">Я заливаю топлива</label>
+            <input type="text" th:field="*{fuelC}" id = "consumption_fuel" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+            <div style="color:darkred" th:if="${#fields.hasErrors('fuelC')}" th:errors="*{fuelC}">error</div>
+            <span class="dbi pt5 pl10"> л.</span>
+        </div>
+        <div class="mb20">
+            <label for="consumption_km" class="db mb5">и проезжаю</label>
+            <input type="text" th:field="*{dist}" id = "consumption_km" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+            <div style="color:darkred" th:if="${#fields.hasErrors('dist')}" th:errors="*{dist}">error</div>
+            <span class="dbi pt5 pl10"> км.</span>
+        </div>
+        <div class="mb20">
+            <button id="price_consumption" class="btn_find pd5_15 font16 noselect" type="submit1" value="Submit" >Рассчитать расход</button>
+        </div>
+        <div>Расход топлива вашего авто составляет <span th:text="${calculator.consum}"></span> литров на 100 км.</div>
+          </form>
+        <h2 class="mt25 mb15">Насколько хватит топлива</h2>
+        <form th:method="PUT" th:action="@{calculator}" th:object="${calculator}" name = "form">
+        <div id="distances">
+            <div class="mb15">
+                <label for="dist_consumption" class="db mb5">Расход топлива автомобиля</label>
+                <input type="text" th:field="*{consumAuto}" id = "dist_consumption" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+                <div style="color:darkred" th:if="${#fields.hasErrors('consumAuto')}" th:errors="*{consumAuto}">error</div>
+                <span class="dbi pt5 pl10"> л/100 км.</span>
+            </div>
+            <div class="mb10">
+                <label for="dist_fuel" class="db mb5">я залил</label>
+                <input type="text" th:field="*{countF}" id = "dist_fuel" class="dbi wd250 pd5_10 bsbox brd_1px brd_solid brd_ccc brd_r2 wd220_480">
+                <div style="color:darkred" th:if="${#fields.hasErrors('countF')}" th:errors="*{countF}">error</div>
+                <span class="dbi pt5 pl10"> литров</span>
+            </div>
+            <div class="mb20">
+                <button id="calculate_dist" class="btn_find pd5_15 font16 " type="submit2" value="Submit">Рассчитать расстояние</button>
+            </div>
+            <div>Вы сможете проехать <span th:text="${calculator.distTravel}"></span>  км.</div>
+        </div>
+        </form>
+    </div>
+</div>
+
+      </div>
+  </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>

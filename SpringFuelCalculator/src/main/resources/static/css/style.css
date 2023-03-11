@@ -1,0 +1,147 @@
+#wrap{
+    width: 100%;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 22px;
+    font-family: verdana;
+    color: #333;
+    border: 0;
+    background: transparent;
+}
+#main_container{
+
+    width: 100%;
+    position: relative;
+}
+#main {
+    margin-top: 10px;
+}
+.section{
+    background-color: #F1F4F7;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+#main-big{
+    width: 100%;
+    margin-bottom: 20px;
+}
+#main h1{
+    font-size: 26px;
+    font-weight: normal;
+    line-height: 32px;
+    color: #333;
+}
+.mb15{
+    margin-bottom: 15px;
+}
+.clearfix:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+}
+.dflex{
+    display: flex;
+}
+.bsbox{
+    box-sizing: border-box;
+}
+.pr10{
+    padding-right: 10px;
+}
+.mb20{
+    margin-bottom: 20px;
+}
+.mt40{
+    margin-top: 42px;
+}
+.wd50pc{
+    width: 50%;
+}
+.wrapper{
+    background: #fff;
+    box-shadow: 0 1px 5px rgb(0 0 0 / 15%);
+    border-radius: 3px;
+}
+.pd20{
+    padding: 20px;
+}
+#main h2{
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 24px;
+    color: #333;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.db{
+    display: block;
+}
+.mb5{
+    margin-bottom: 5px;
+}
+.brd_r2{
+    border-radius: 2px;
+}
+.brd_ccc{
+    border-color: #ccc;
+}
+.brd_1px{
+    border-width: 1px;
+}
+.brd_solid{
+    border-style: solid;
+}
+.bsbox{
+    box-sizing: border-box;
+}
+.pd5_10{
+    padding: 5px 10px;
+}
+.wd250{
+    width: 250px;
+}
+.dbi{
+    display: inline-block;
+}
+input{
+    font-size: 14px;
+    line-height: 22px;
+    font-family: verdana;
+    color: #333;
+}
+.pl10{
+    padding-left: 10px;
+}
+.pt5{
+    padding-top: 5px;
+}
+.btn_find{
+    border-radius: 3px;
+    border: 1px solid #A24D40;
+    background: linear-gradient(#CF695B, #A43423);
+    color: #fff;
+    text-shadow: 0px 0px 3px #3e1b0b;
+}
+.noselect{
+    user-select: none;
+}
+.font16{
+    font-size: 16px;
+    line-height: 22px;
+}
+.pd5_15{
+    padding: 5px 15px;
+}
+button{
+    cursor: pointer;
+}
+.mt25{
+    margin-top: 25px;
+}
